@@ -1,19 +1,24 @@
 .popup {
   position: fixed;
-  top: 15%;
-  left: 40%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 2;
   border-radius: 10px;
   align-items: center;
-  flex-direction: column;
-  background-color: white;
+  justify-content: center;
   color: black;
   border: 0;
   display: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.popup__container {
+  background-color: white;
 }
 
 .popup_opened {
-  display: block;
+  display: flex;
 }
 .popup__close {
   background-image: url("../images/Close\ Icon.png");
@@ -70,11 +75,6 @@
   font-size: 14px;
 }
 @media screen and (max-width: 1020px) {
-  .popup {
-    position: fixed;
-    top: 125px;
-    left: 28.5%;
-  }
   .popup__edit-profile {
     width: 282px;
     height: 322px;
@@ -91,11 +91,6 @@
   }
 }
 @media screen and (max-width: 550px) {
-  .popup {
-    position: fixed;
-    top: 123px;
-    left: 3%;
-  }
   .popup__edit-profile {
     width: 282px;
     height: 322px;

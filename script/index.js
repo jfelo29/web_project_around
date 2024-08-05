@@ -1,13 +1,14 @@
 const editButton = document.querySelector(".profile__button");
 const popup = document.querySelector(".popup");
 const closeButton = document.querySelector(".popup__close");
+const formElement = document.querySelector(".popup__edit-profile");
 //console.log(popup);
 
 function handleopenpopup() {
   popup.classList.add("popup_opened");
 
-  let name = document.querySelector(".profile__name").textContent;
-  let about = document.querySelector(".profile__about").textContent;
+  const name = document.querySelector(".profile__name").textContent;
+  const about = document.querySelector(".profile__about").textContent;
 
   const nameInput = document.querySelector("#nombre");
   const aboutinput = document.querySelector("#acerca");
@@ -19,15 +20,11 @@ function handleclosepopup() {
   popup.classList.remove("popup_opened");
   //console.log("funcionamiento cierre formulario");
 }
-editButton.addEventListener("click", handleopenpopup);
-closeButton.addEventListener("click", handleclosepopup);
-
-let formElement = document.querySelector(".popup__edit-profile");
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  let name = document.querySelector(".profile__name");
-  let about = document.querySelector(".profile__about");
+  const name = document.querySelector(".profile__name");
+  const about = document.querySelector(".profile__about");
 
   const nameInput = document.querySelector("#nombre");
   const aboutInput = document.querySelector("#acerca");
@@ -37,4 +34,6 @@ function handleProfileFormSubmit(evt) {
   handleclosepopup();
 }
 
+editButton.addEventListener("click", handleopenpopup);
+closeButton.addEventListener("click", handleclosepopup);
 formElement.addEventListener("submit", handleProfileFormSubmit);
