@@ -15,6 +15,7 @@
 }
 .popup__container {
   background-color: white;
+  position: relative;
 }
 
 .popup_opened {
