@@ -17,7 +17,9 @@
   background-color: white;
   position: relative;
 }
-
+.popup__image-title {
+  color: white;
+}
 .popup_opened {
   display: flex;
 }
@@ -51,7 +53,7 @@
 .popup__submit:hover {
   background-color: #545454;
 }
-.popup__edit-profile {
+.popup-form {
   width: 430px;
   height: 330px;
 
@@ -74,6 +76,15 @@
 
   font-family: "Inter";
   font-size: 14px;
+}
+.popup__image-src {
+  max-width: 75vw;
+  max-height: 75vh;
+  width: 100%;
+}
+.popup__image-title {
+  color: #000000;
+  background-color: transparent;
 }
 @media screen and (max-width: 1020px) {
   .popup__edit-profile {

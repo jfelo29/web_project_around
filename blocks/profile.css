@@ -58,6 +58,7 @@
   width: 150px;
   height: 50px;
   border-radius: 2px;
+  cursor: pointer;
 }
 @media screen and (max-width: 1020px) {
   .profile {

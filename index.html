@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <title>around the U.S</title>
   </head>
+
   <body>
     <div class="page">
       <header class="header">
@@ -47,132 +48,73 @@
             />
           </button>
         </section>
-        <section class="elements">
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1088404-unsplash-1.jpg"
-              alt="valle de yasemie"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>valle de Yesemie</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1404681-unsplash-2.png"
-              alt="Lago Louise"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>Lago Louise</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1556355-unsplash-3.png"
-              alt="Montañas Calvas"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>Montañas Calvas</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1404681-unsplash-4.png"
-              alt="Latemar"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>Latemar</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1556355-unsplash-5.png"
-              alt="Vanois National"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>Vanois National</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="element">
-            <img
-              src="/images/kirill-pershin-1088404-unsplash-6.png"
-              alt="Lago di Braies"
-              class="elements__item"
-            />
-            <div class="elements__description">
-              <p>Lago di Braies</p>
-              <button class="elements__button">
-                <img
-                  src="/images/me gusta.svg"
-                  alt="like"
-                  class="like__button"
-                />
-              </button>
-            </div>
-          </div>
-        </section>
-        <div class="popup">
-          <div class="popup__container">
-            <button class="popup__close"></button>
-            <form class="popup__edit-profile">
-              <h2 class="popup__title">Editar Perfil</h2>
-              <input
-                type="text"
-                placeholder="nombre"
-                id="nombre"
-                class="popup__item"
-              />
-              <input
-                type="text"
-                placeholder="acerca de mi"
-                id="acerca"
-                class="popup__item"
-              />
-              <button class="popup__submit">guardar</button>
-            </form>
+        <section class="element-list"></section>
+      </main>
+      <template id="card__area">
+        <div class="card">
+          <div class="card__delate-icon"></div>
+          <img src="" alt="item-foto" class="elements__item" />
+          <div class="card__menu">
+            <h2 class="card__title"></h2>
+
+            <button class="card__like"></button>
           </div>
         </div>
-      </main>
+      </template>
+    </div>
+
+    <div class="popup" id="popup-profile">
+      <div class="popup__container">
+        <button class="popup__close"></button>
+        <form class="popup-form popup__edit-profile" id="form-profile">
+          <h2 class="popup__title">Editar Perfil</h2>
+          <input
+            type="text"
+            placeholder="nombre"
+            id="name"
+            class="popup__item"
+          />
+          <input
+            type="text"
+            placeholder="acerca de mi"
+            id="acerca"
+            class="popup__item"
+          />
+          <button class="popup__submit">guardar</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup" id="popup-cards">
+      <div class="popup__container">
+        <button class="popup__close"></button>
+        <form class="popup-form popup__add-profile" id="form-cards">
+          <h2 class="popup__title">crear carta</h2>
+          <input
+            type="text"
+            name="title"
+            placeholder="title"
+            id="input-card-title"
+            class="popup__item"
+          />
+          <input
+            type="text"
+            name="link"
+            placeholder="cargar imagen"
+            id="input-card-link"
+            class="popup__item"
+          />
+          <button class="popup__submit">crear</button>
+        </form>
+      </div>
+    </div>
+    <div class="popup" id="popup-image">
+      <div class="popup__container">
+        <button class="popup__close"></button>
+
+        <img src="" alt="" class="popup__image-src" />
+        <h3 class="popup__image-title"></h3>
+      </div>
     </div>
     <script src="./script/index.js"></script>
   </body>
