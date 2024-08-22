@@ -61,6 +61,7 @@
   background-size: contain;
   transition: 0.4s ease-in-out;
   cursor: pointer;
+  margin: 0;
 }
 
 .card__like-icon_active {

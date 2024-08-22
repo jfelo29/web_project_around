@@ -114,6 +114,7 @@ function openPopupImage(title, link) {
   popupImage.classList.add("popup_opened");
   popupImageTitle.textContent = title;
   popupImageSRC.src = link;
+  popupImageSRC.alt = title;
 }
 
 function closePopupImage() {
