@@ -44,6 +44,10 @@ const initialCards = [
   },
 ];
 
+//const formProfile = document.querySelector("#form-cards");
+//const profilename = document.querySelector("#name");
+//const professionPerson = document.querySelector("#acerca");
+
 function createCard(card) {
   const newCard = cardArea.cloneNode(true);
   const image = newCard.querySelector(".elements__item");
@@ -77,15 +81,29 @@ function openPopupProfile() {
   const name = document.querySelector(".profile__name").textContent;
   const about = document.querySelector(".profile__about").textContent;
 
-  const nameInput = document.querySelector("#name");
-  const aboutinput = document.querySelector("#acerca");
+  const nameInput = document.querySelector("#input-name");
+  const aboutinput = document.querySelector("#input-about");
 
   nameInput.value = name;
   aboutinput.value = about;
+
+  document.addEventListener("keydown", closeOnEsc);
+  document.addEventListener("click", closeWithClick);
 }
 
+/*function formProfile(name, about) {
+  form.addEventListener("submit", function (evet) {
+    evt.preventDefault();
+    formProfile(name, about);
+    name.value = "";
+    title.value = "";
+    setSubmitButtonState(false);
+  });
+}*/
 function closePopuProfile() {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
+  document.removeEventListener("click", closeWithClick);
 }
 
 function handleProfileFormSubmit(evt) {
@@ -93,8 +111,8 @@ function handleProfileFormSubmit(evt) {
   const name = document.querySelector(".profile__name");
   const about = document.querySelector(".profile__about");
 
-  const nameInput = document.querySelector("#name");
-  const aboutInput = document.querySelector("#acerca");
+  const nameInput = document.querySelector("#input-name");
+  const aboutInput = document.querySelector("#input-about");
 
   name.textContent = nameInput.value;
   about.textContent = aboutInput.value;
@@ -103,24 +121,30 @@ function handleProfileFormSubmit(evt) {
 
 function openPopupCards() {
   popupCards.classList.add("popup_opened");
+  document.addEventListener("keydown", closeOnEsc);
+  document.addEventListener("click", closeWithClick);
 }
 
 function closePopupCards() {
-  //console.log("hola");
   popupCards.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
+  document.removeEventListener("click", closeWithClick);
 }
 function openPopupImage(title, link) {
-  //console.log("hola");
   popupImage.classList.add("popup_opened");
   popupImageTitle.textContent = title;
   popupImageSRC.src = link;
   popupImageSRC.alt = title;
+  document.addEventListener("keydown", closeOnEsc);
+  document.addEventListener("click", closeWithClick);
 }
 
 function closePopupImage() {
-  console.log("hola");
   popupImage.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closeOnEsc);
+  document.removeEventListener("click", closeWithClick);
 }
+
 closeButtonImage.addEventListener("click", closePopupImage);
 editButton.addEventListener("click", openPopupProfile);
 addCardButton.addEventListener("click", openPopupCards);
@@ -141,3 +165,23 @@ formAddCard.addEventListener("submit", function (evt) {
   cardArea.prepend(newCard);
   closePopupCards();
 });
+const closeOnEsc = (evt) => {
+  console.log(evt.key);
+  if (evt.key === "Escape") {
+    closePopupCards();
+    closePopuProfile();
+    closePopupImage();
+  }
+};
+
+const closeWithClick = (evt) => {
+  if (evt.target.classList.contains("popup_opened")) {
+    closePopupCards();
+    closePopuProfile();
+    closePopupImage();
+  }
+};
+
+// linea 46 a 48
+// linea 89 -96
+// el form va afuera lo puse ahi para tenerlo mientras mas cerca

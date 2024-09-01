@@ -53,7 +53,7 @@
 .popup__submit:hover {
   background-color: #545454;
 }
-.popup-form {
+.popup__form {
   width: 430px;
   height: 330px;
 
@@ -85,6 +85,12 @@
 .popup__image-title {
   color: #000000;
   background-color: transparent;
+}
+.popup__input-error {
+  color: red;
+}
+.form__input_type_error {
+  border-bottom: 1px solid rgb(rgb(233, 5, 5), green, blue);
 }
 @media screen and (max-width: 1020px) {
   .popup__edit-profile {
