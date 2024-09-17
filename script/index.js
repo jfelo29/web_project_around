@@ -1,15 +1,29 @@
+import Card from "./card.js";
+import {
+  initialCards,
+  openPopupProfile,
+  closePopuProfile,
+  handleProfileFormSubmit,
+  openPopupCards,
+  closePopupCards,
+  openPopupImage,
+  closePopupImage,
+} from "./utils.js";
+
+//import formValidator from "./FormValidator.js";
 const editButton = document.querySelector(".profile__button");
 const addCardButton = document.querySelector(".add__button");
-const popup = document.querySelector(".popup");
+
 const formAddCard = document.querySelector("#form-cards");
 const popupImage = document.querySelector("#popup-image");
-const popupImageSRC = document.querySelector(".popup__image-src");
-const popupImageTitle = document.querySelector(".popup__image-title");
+//const popupImageSRC = document.querySelector(".popup__image-src");
+//const popupImageTitle = document.querySelector(".popup__image-title");
 const closeButtonImage = popupImage.querySelector(".popup__close");
-const popupCards = document.querySelector("#popup-cards");
+//const popupCards = document.querySelector("#popup-cards");
+
 const closeButton = document.querySelector(".popup__close");
 const formElement = document.querySelector(".popup__edit-profile");
-const cardCloseButton = popupCards.querySelector(".popup__close");
+//const cardCloseButton = popupCards.querySelector(".popup__close");
 const inputCardTitle = document.querySelector("#input-card-title");
 const inputCardLink = document.querySelector("#input-card-link");
 const cardArea = document
@@ -17,7 +31,7 @@ const cardArea = document
   .content.querySelector(".card");
 const elements = document.querySelector(".element-list");
 const elementsSection = document.querySelector(".elements");
-const initialCards = [
+/*const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
@@ -42,7 +56,7 @@ const initialCards = [
     name: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
-];
+];*/
 
 //const formProfile = document.querySelector("#form-cards");
 //const profilename = document.querySelector("#name");
@@ -50,7 +64,7 @@ const initialCards = [
 
 function createCard(card) {
   const newCard = cardArea.cloneNode(true);
-  const image = newCard.querySelector(".elements__item");
+  const image = newCard.querySelector(".card__image");
   const title = newCard.querySelector(".card__title");
   const cardLikeButton = newCard.querySelector(".card__like");
   const delatebutton = newCard.querySelector(".card__delate-icon");
@@ -72,10 +86,12 @@ function createCard(card) {
 }
 
 initialCards.forEach(function (item) {
-  createCard(item);
+  const card = new Card(item.name, item.link);
+  const cardElement = card.getcard();
+  elements.prepend(cardElement);
 });
 
-function openPopupProfile() {
+/*function openPopupProfile() {
   popup.classList.add("popup_opened");
 
   const name = document.querySelector(".profile__name").textContent;
@@ -100,13 +116,13 @@ function openPopupProfile() {
     setSubmitButtonState(false);
   });
 }*/
-function closePopuProfile() {
+/*function closePopuProfile() {
   popup.classList.remove("popup_opened");
   document.removeEventListener("keydown", closeOnEsc);
   document.removeEventListener("click", closeWithClick);
 }
 
-function handleProfileFormSubmit(evt) {
+/*function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   const name = document.querySelector(".profile__name");
   const about = document.querySelector(".profile__about");
@@ -144,18 +160,18 @@ function closePopupImage() {
   document.removeEventListener("keydown", closeOnEsc);
   document.removeEventListener("click", closeWithClick);
 }
-
+*/
 closeButtonImage.addEventListener("click", closePopupImage);
 editButton.addEventListener("click", openPopupProfile);
 addCardButton.addEventListener("click", openPopupCards);
 
 closeButton.addEventListener("click", closePopuProfile);
 formElement.addEventListener("submit", handleProfileFormSubmit);
-cardCloseButton.addEventListener("click", closePopupCards);
+//cardCloseButton.addEventListener("click", closePopupCards);
 
 formAddCard.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  console.log(inputCardTitle, inputCardLink);
+
   const data = {
     link: inputCardLink.value,
     name: inputCardTitle.value,
@@ -165,23 +181,19 @@ formAddCard.addEventListener("submit", function (evt) {
   cardArea.prepend(newCard);
   closePopupCards();
 });
-const closeOnEsc = (evt) => {
+/*function closeOnEsc(evt) {
   console.log(evt.key);
   if (evt.key === "Escape") {
     closePopupCards();
     closePopuProfile();
     closePopupImage();
   }
-};
+}
 
-const closeWithClick = (evt) => {
+function closeWithClick(evt) {
   if (evt.target.classList.contains("popup_opened")) {
     closePopupCards();
     closePopuProfile();
     closePopupImage();
   }
-};
-
-// linea 46 a 48
-// linea 89 -96
-// el form va afuera lo puse ahi para tenerlo mientras mas cerca
+}*/
