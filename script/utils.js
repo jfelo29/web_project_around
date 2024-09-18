@@ -1,10 +1,11 @@
 const popup = document.querySelector(".popup");
-const formAddCard = document.querySelector("#form-cards");
+
 const popupImage = document.querySelector("#popup-image");
 const popupImageSRC = document.querySelector(".popup__image-src");
 const popupImageTitle = document.querySelector(".popup__image-title");
 const popupCards = document.querySelector("#popup-cards");
 const cardCloseButton = popupCards.querySelector(".popup__close");
+const popupprofile = document.querySelector("#popup-profile");
 
 export const initialCards = [
   {
@@ -43,6 +44,9 @@ export function openPopupProfile() {
 
   nameInput.value = name;
   aboutinput.value = about;
+  const buttonElement = popupprofile.querySelector(".popup__submit");
+  buttonElement.classList.add("popup__submit_inactive");
+  buttonElement.disabled = true;
 
   document.addEventListener("keydown", closeOnEsc);
   document.addEventListener("click", closeWithClick);
@@ -80,6 +84,9 @@ export function openPopupCards() {
   popupCards.classList.add("popup_opened");
   document.addEventListener("keydown", closeOnEsc);
   document.addEventListener("click", closeWithClick);
+  const buttonElement = popupCards.querySelector(".popup__submit");
+  buttonElement.classList.add("popup__submit_inactive");
+  buttonElement.disabled = true;
 }
 
 export function closePopupCards() {

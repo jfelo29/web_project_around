@@ -45,5 +45,6 @@ export default class Card {
   }
   openModalCard() {
     openPopupImage(this.name, this.link);
+
   }
 }
