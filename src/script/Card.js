@@ -1,8 +1,10 @@
 import { openPopupImage } from "./utils.js";
 export default class Card {
-  constructor(name, link) {
+  constructor(name, link, handleClickImage) {
+    //se agrego el handle
     this.name = name;
     this.link = link;
+    this.handleClickImage = handleClickImage;
   }
   getTemplate() {
     const cardTemplate = document.querySelector("#card__area").content;
@@ -26,6 +28,7 @@ export default class Card {
     this.cardImage.addEventListener("click", () => {
       this.openModalCard();
     });
+    this.cardImage.addEventListener("click", this.handleClickImage); //se agrega esto tambien pero igual a mi parecer se crea sin esto tambien la imagen
   }
   setProperties() {
     this.htmlCard = this.getTemplate();
@@ -45,6 +48,5 @@ export default class Card {
   }
   openModalCard() {
     openPopupImage(this.name, this.link);
-
   }
 }

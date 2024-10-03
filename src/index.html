@@ -15,7 +15,7 @@
     <div class="page">
       <header class="header">
         <img
-          src="/images/around the us.png"
+          src="<%= require('./images/around-the-us.png') %>"
           alt="around the us"
           class="header__logo"
         />
@@ -23,7 +23,7 @@
       <main>
         <section class="profile">
           <img
-            src="/images/profilepicture.jpg"
+            src="<%= require('./images/profilepicture.jpg') %>"
             alt="foto perfil"
             class="profile__image"
           />
@@ -32,7 +32,7 @@
               <h2 class="profile__name">Jacques Cousteau</h2>
               <button class="profile__button">
                 <img
-                  src="/images/Vector.svg"
+                  src="<%= require('./images/pen-image.svg') %>"
                   alt="mouse botton"
                   class="icon__button"
                 />
@@ -43,7 +43,7 @@
           </div>
           <button class="add__button">
             <img
-              src="/images/plus image.svg"
+              src="<%= require('./images/plus-image.svg') %>"
               alt="mas imagen"
               class="second__button"
             />
@@ -77,6 +77,7 @@
             minlength="2"
             maxlength="40"
             required
+            name="name"
           />
           <span class="popup__input-error input-name-error"></span>
 
@@ -88,6 +89,7 @@
             minlength="2"
             maxlength="200"
             required
+            name="about"
           />
           <span class="popup__input-error input-about-error"></span>
           <button class="popup__submit">guardar</button>
@@ -102,7 +104,7 @@
           <h2 class="popup__title">crear carta</h2>
           <input
             type="text"
-            name="title"
+            name="name"
             placeholder="title"
             id="input-card-title"
             class="popup__item"
