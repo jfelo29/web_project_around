@@ -49,25 +49,9 @@ function handleProfileFormSubmit(user) {
   popupProfile.close();
 }
 function createCard(card) {
-  const newCard = cardArea.cloneNode(true);
-  const image = newCard.querySelector(".card__image");
-  const title = newCard.querySelector(".card__title");
-  const cardLikeButton = newCard.querySelector(".card__like");
-  const delatebutton = newCard.querySelector(".card__delate-icon");
-  cardLikeButton.addEventListener("click", function () {
-    cardLikeButton.classList.toggle("card__like-icon_active");
-  });
-  delatebutton.addEventListener("click", function () {
-    newCard.remove();
-  });
-  image.addEventListener("click", function () {
-    openPopupImage(card.name, card.link);
-  });
-
-  image.src = card.link;
-  title.textContent = card.name;
-
-  return newCard;
+  const cardIntance = new Card(card.name, card.link);
+  const cardElement = cardIntance.getcard();
+  return cardElement;
 }
 
 new Section(initialCards, createCard, ".element-list").renderer();

@@ -14,12 +14,10 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 .popup__container {
-  background-color: white;
+  /*background-color: white;*/
   position: relative;
 }
-.popup__image-title {
-  color: white;
-}
+
 .popup_opened {
   display: flex;
 }
@@ -87,8 +85,8 @@
   width: 100%;
 }
 .popup__image-title {
-  color: #000000;
   background-color: transparent;
+  color: white;
 }
 .popup__input-error {
   color: red;

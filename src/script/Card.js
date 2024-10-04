@@ -39,6 +39,9 @@ export default class Card {
     this.cardDelateButton = this.htmlCard.querySelector(".card__delate-icon");
     this.cardTitle.textContent = this.name;
     this.cardImage.src = this.link;
+    this.cardImage.alt = this.name;
+    console.log(this.cardImage);
+    console.log(this.name);
   }
 
   getcard() {
