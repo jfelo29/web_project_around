@@ -1,10 +1,25 @@
 import { openPopupImage } from "./utils.js";
 export default class Card {
-  constructor(name, link, handleClickImage) {
-    //se agrego el handle
+  constructor(
+    name,
+    link,
+    likes,
+    handleClickImage,
+    owner,
+    handleDelete,
+    likeCard,
+    dislikeCard,
+    cardId
+  ) {
     this.name = name;
     this.link = link;
+    this.likes = likes;
+    this.owner = owner;
     this.handleClickImage = handleClickImage;
+    this.handleDelete = handleDelete;
+    this.likeCard = likeCard;
+    this.dislikeCard = dislikeCard;
+    this.cardId = cardId;
   }
   getTemplate() {
     const cardTemplate = document.querySelector("#card__area").content;
@@ -13,7 +28,8 @@ export default class Card {
   }
 
   toogleLike() {
-    this.cardLikeButton.classList.toggle("card__like-icon_active");
+    this.likeCard(this.cardId);
+    //this.cardLikeButton.classList.toggle("card__like-icon_active");
   }
   removeCard() {
     this.htmlCard.remove();
@@ -23,12 +39,12 @@ export default class Card {
       this.toogleLike();
     });
     this.cardDelateButton.addEventListener("click", () => {
-      this.removeCard();
+      this.handleDelete();
     });
     this.cardImage.addEventListener("click", () => {
       this.openModalCard();
     });
-    this.cardImage.addEventListener("click", this.handleClickImage); //se agrega esto tambien pero igual a mi parecer se crea sin esto tambien la imagen
+    this.cardImage.addEventListener("click", this.handleClickImage);
   }
   setProperties() {
     this.htmlCard = this.getTemplate();
@@ -40,12 +56,14 @@ export default class Card {
     this.cardTitle.textContent = this.name;
     this.cardImage.src = this.link;
     this.cardImage.alt = this.name;
-    console.log(this.cardImage);
-    console.log(this.name);
+    const counterLikes = this.htmlCard.querySelector(".pruebalikes");
+    counterLikes.textContent = this.likes.length;
   }
 
   getcard() {
+    console.log(this.likes.length);
     this.setProperties();
+
     this.setEventListeners();
     return this.htmlCard;
   }

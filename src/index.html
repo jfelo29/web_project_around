@@ -58,6 +58,7 @@
             <h2 class="card__title"></h2>
 
             <button class="card__like"></button>
+            <p class="pruebalikes"></p>
           </div>
         </div>
       </template>
@@ -111,6 +112,7 @@
             maxlength="40"
           />
           <span class="popup__input-error input-card-title-error"></span>
+
           <input
             type="url"
             name="link"
@@ -123,6 +125,18 @@
           <button class="popup__submit">crear</button>
         </form>
       </div>
+    </div>
+    <div class="popup" id="popup-delete">
+      <button class="popup__close"></button>
+      <form
+        class="popup__form popup__delate"
+        class="popup__form popup__delete-card"
+        id="form-delete"
+      >
+        <h2 class="popup__title">Eliminar Carta</h2>
+        <p class="popup__text">¿Estás seguro de eliminar esta carta?</p>
+        <button class="popup__submit">eliminar</button>
+      </form>
     </div>
     <div class="popup" id="popup-image">
       <div class="popup__container">
