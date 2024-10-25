@@ -14,12 +14,18 @@ const api = new Api("https://around.nomoreparties.co/v1/web-es-cohort-16", {
   authorization: "8edde1ac-8f4b-48c8-98ae-8fc6660146ff",
   "content-type": "application/json",
 });
+
+
 api.getUserInfo().then((data) => {
   userInfo.setUserInfo(data.name, data.about, data.avatar);
+
+  api.getCards().then((cardData) => {
+    new Section(cardData, createCard, ".element-list", data._id).renderer();
+  });
+
 });
-api.getCards().then((data) => {
-  new Section(data, createCard, ".element-list").renderer();
-});
+
+
 
 const editButton = document.querySelector(".profile__button");
 const addCardButton = document.querySelector(".add__button");
@@ -45,6 +51,7 @@ const popupProfile = new PopupWithForm(
 );
 const popupCards = new PopupWithForm("#popup-cards", (data) =>
   api.createcard(data).then((data) => {
+    console.log(data)
     const newCard = new Card(
       data.name,
       data.link,
@@ -56,19 +63,25 @@ const popupCards = new PopupWithForm("#popup-cards", (data) =>
       () => {
         popupDeleteCard.open(data._id);
         popupDeleteCard.setSubmitAction(() => {
-          api.delateCard(data._id).then((data) => {});
+          api.delateCard(data._id).then((data) => { });
         });
-      }
+      },
+      null,
+      null,
+      "Horacio"
     );
 
     elements.prepend(newCard.getcard());
     closePopupCards();
   })
 );
-const popupAvatarProfile = new PopupWithForm("#popup-avatar-edit", (data) =>
-  api.profileImage(data).then((data) => {
-    userInfo.setUserInfo(data.name, data.about, data.avatar);
-  })
+const popupAvatarProfile = new PopupWithForm(
+  "#popup-avatar-edit",
+  (data) => {
+    api.profileImage(data).then((data) => {
+      userInfo.setUserInfo(data.name, data.about, data.avatar);
+    })
+  }
 );
 const popupDeleteCard = new PopupWithConfirmation("#popup-delete");
 
@@ -76,8 +89,9 @@ popupDeleteCard.setEventListeners();
 popupCards.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
+popupAvatarProfile.setEventListeners();
 
-function createCard(card) {
+function createCard(card, userId) {
   const cardIntance = new Card(
     card.name,
     card.link,
@@ -85,7 +99,8 @@ function createCard(card) {
     () => {
       popupImage.open(card.link, card.name);
     },
-    "424c789f572ac233f6180c81", // esto se paso de manera manual por lo que entendi
+    //"424c789f572ac233f6180c81", // esto se paso de manera manual por lo que entendi
+    card.owner._id,
     () => {
       popupDeleteCard.open(card._id);
       popupDeleteCard.setSubmitAction(() => {
@@ -99,7 +114,9 @@ function createCard(card) {
     },
     () => {
       return api.dislikeCard(card._id);
-    }
+    },
+    null,
+    userId
   );
 
   const cardElement = cardIntance.getcard();

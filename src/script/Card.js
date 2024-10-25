@@ -1,4 +1,5 @@
 import { openPopupImage } from "./utils.js";
+
 export default class Card {
   constructor(
     name,
@@ -9,7 +10,8 @@ export default class Card {
     handleDelete,
     likeCard,
     dislikeCard,
-    cardId
+    cardId,
+    userId
   ) {
     this.name = name;
     this.link = link;
@@ -20,6 +22,7 @@ export default class Card {
     this.likeCard = likeCard;
     this.dislikeCard = dislikeCard;
     this.cardId = cardId;
+    this.userId = userId;
   }
   getTemplate() {
     const cardTemplate = document.querySelector("#card__area").content;
@@ -32,6 +35,7 @@ export default class Card {
     console.log(likes);
     if (likes.find((like) => like._id === this.owner)) {
       this.dislikeCard(this.cardId).then((data) => {
+        // el then no deberia ir aca en tooglelike
         //denmtro de then poner que cambie el numero y quede el link
         this.cardLikeButton.classList.remove("card__like-icon_active");
         this.counterLikes.textContent = data.likes.length;
@@ -67,11 +71,17 @@ export default class Card {
     this.cardTitle = this.htmlCard.querySelector(".card__title");
     this.cardLikeButton = this.htmlCard.querySelector(".card__like");
     this.cardDelateButton = this.htmlCard.querySelector(".card__delate-icon");
+
     this.cardTitle.textContent = this.name;
     this.cardImage.src = this.link;
     this.cardImage.alt = this.name;
     this.counterLikes = this.htmlCard.querySelector(".pruebalikes");
     this.counterLikes.textContent = this.likes.length;
+
+    if (this.owner !== this.userId) {
+      this.cardDelateButton.remove();
+    }
+
     if (this.likes.find((like) => like._id === this.owner)) {
       this.cardLikeButton.classList.add("card__like-icon_active");
     } else {

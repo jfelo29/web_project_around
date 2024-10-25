@@ -67,8 +67,10 @@
       </template>
     </div>
 
-    <div class="popup" id="popup-profile" >
-        <button class="popup__close "></button>
+    <div class="popup" id="popup-profile">
+      <div class="popup__container">
+        <button class="popup__close"></button>
+
         <form class="popup__form popup__edit-profile" id="form-profile">
           <h2 class="popup__title">Editar Perfil</h2>
           <input
@@ -130,11 +132,7 @@
     </div>
     <div class="popup" id="popup-delete">
       <button class="popup__close"></button>
-      <form
-
-        class="popup__form popup__delete-card"
-        id="form-delete"
-      >
+      <form class="popup__form popup__delete-card" id="form-delete">
         <h2 class="popup__title">Eliminar Carta</h2>
         <p class="popup__text">¿Estás seguro de eliminar esta carta?</p>
         <button class="popup__submit">eliminar</button>
@@ -143,14 +141,10 @@
 
     <div class="popup" id="popup-avatar-edit">
       <div class="popup__container">
-      <button class="popup__close"></button>
-      <form
-        class="popup__form popup__avatar-edit"
-
-        id="form-avatar-edit"
-      >
-        <h2 class="popup__title">Cambiar foto de perfil</h2>
-        <input
+        <button class="popup__close"></button>
+        <form class="popup__form popup__avatar-edit" id="form-avatar-edit">
+          <h2 class="popup__title">Cambiar foto de perfil</h2>
+          <input
             type="url"
             name="avatar"
             placeholder="cargar imagen"
@@ -159,9 +153,9 @@
             required
           />
           <span class="popup__input-error input-avatar-link-error"></span>
-        <button class="popup__submit">eliminar</button>
-      </form>
-    </div>
+          <button class="popup__submit">Guardar</button>
+        </form>
+      </div>
     </div>
     <div class="popup" id="popup-image">
       <div class="popup__container">

@@ -2,7 +2,7 @@ export default class UserInfo {
   constructor() {
     this.name = document.querySelector(".profile__name");
     this.about = document.querySelector(".profile__about");
-    this.userAvatar = document.querySelector(".profile");
+    this.userAvatar = document.querySelector(".profile__image");
   }
   getUserInfo() {
     return { name: this.name.textContent, about: this.about.textContent };
