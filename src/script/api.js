@@ -79,7 +79,7 @@ export default class Api {
   }
   dislikeCard(cardId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/web-es-cohort-16/cards/${cardId}/dislikes`,
+      `https://around.nomoreparties.co/v1/web-es-cohort-16/cards/${cardId}/likes`,
       {
         method: "DELETE",
         headers: this.headers,

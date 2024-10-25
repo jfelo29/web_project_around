@@ -28,8 +28,22 @@ export default class Card {
   }
 
   toogleLike() {
-    this.likeCard(this.cardId);
-    //this.cardLikeButton.classList.toggle("card__like-icon_active");
+    let likes = this.likes;
+    console.log(likes);
+    if (likes.find((like) => like._id === this.owner)) {
+      this.dislikeCard(this.cardId).then((data) => {
+        //denmtro de then poner que cambie el numero y quede el link
+        this.cardLikeButton.classList.remove("card__like-icon_active");
+        this.counterLikes.textContent = data.likes.length;
+        this.likes = data.likes; // llegar a todo esto no lo hubiera llegado a hacer realmente solo no hubiera sabido como llegar a la funcion de find lo que yo habia hecho era totalemnte errado diferente
+      });
+    } else {
+      this.likeCard(this.cardId).then((data) => {
+        this.cardLikeButton.classList.add("card__like-icon_active");
+        this.counterLikes.textContent = data.likes.length;
+        this.likes = data.likes;
+      });
+    }
   }
   removeCard() {
     this.htmlCard.remove();
@@ -56,12 +70,16 @@ export default class Card {
     this.cardTitle.textContent = this.name;
     this.cardImage.src = this.link;
     this.cardImage.alt = this.name;
-    const counterLikes = this.htmlCard.querySelector(".pruebalikes");
-    counterLikes.textContent = this.likes.length;
+    this.counterLikes = this.htmlCard.querySelector(".pruebalikes");
+    this.counterLikes.textContent = this.likes.length;
+    if (this.likes.find((like) => like._id === this.owner)) {
+      this.cardLikeButton.classList.add("card__like-icon_active");
+    } else {
+      this.cardLikeButton.classList.remove("card__like-icon_active");
+    } // en esta parte no se me hubiera ocxurrdio de pasar toda la funcion aca
   }
 
   getcard() {
-    console.log(this.likes.length);
     this.setProperties();
 
     this.setEventListeners();

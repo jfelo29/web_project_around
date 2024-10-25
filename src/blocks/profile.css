@@ -19,6 +19,24 @@
   border-radius: 50%;
   object-fit: cover;
 }
+.profile__conteiner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile__icon {
+  position: absolute;
+  background-image: url(../images/pen-image.svg);
+  width: 24px;
+  height: 24px;
+  display: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.profile__conteiner:hover .profile__icon {
+  display: block;
+}
 .profile__button {
   box-sizing: border-box;
   cursor: pointer;
